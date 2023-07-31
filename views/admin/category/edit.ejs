@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <div class="card">
+        <h2 class="card-header text-center">Kategori Düzenleme Formu</h2>
+        <div class="card-body">
+            <form accept="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="kategoriAdi">Kategori Adı:</label>
+                    <input type="text" class="form-control" id="kategoriAdi" name="name" value="<%= category.name %>" placeholder="Kategori adını girin">
+                </div>
+                <div class="form-group">
+                    <label for="kategoriAciklama">Açıklama:</label>
+                    <input type="text" class="form-control" id="kategoriAciklama" name="desc" value="<%= category.desc %>" placeholder="Kategori açıklamasını girin">
+                </div>
+                <div class="form-group">
+                    <label for="kategoriSelect">Üst Kategori:</label>
+                    <select class="form-control" id="kategoriSelect" name="top">
+                        <option value="0">Üst Kategori Yok</option>
+                        <% categories.forEach(function(categoryOption) { %>
+                            <option value="<%= categoryOption._id.toString() %>" <%= categoryOption._id.toString() === category.top.toString() ? 'selected' : '' %>><%= categoryOption.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="formFileLg">Fotoğraf:</label>
+                    <input class="form-control" id="formFileLg" name="file" type="file" />
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3">Kategoriyi Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

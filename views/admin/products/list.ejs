@@ -1,0 +1,33 @@
+<div class="container">
+    <h1 class="my-4">Ürün Listesi</h1>
+    <div class="row">
+      <% products.forEach(function(product, index) { %>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <!-- Resim boyutunu maksimum 200px genişlikte göstermek için style özelliğini kullanın -->
+                <img src="/images/<%= product.file %>" alt="<%= product.name %>" class="card-img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-title"><%= product.name %></h4>
+                  <p class="card-text"><%= product.desc %></p>
+                  <div class="d-flex justify-content-between">
+                    <!-- Düzenle sayfasına giden buton -->
+                    <a href="productedit?id=<%= product._id %>" class="btn btn-primary">Düzenle</a>
+                    <!-- Sil butonu -->
+                    <form action="/productdelete" method="post" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
+                      <input type="hidden" name="productId" value="<%= product._id %>">
+                      <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  
